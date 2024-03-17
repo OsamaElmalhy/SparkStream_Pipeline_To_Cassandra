@@ -106,7 +106,7 @@ services:
   webserver:
     image: apache/airflow:2.6.0-python3.9
     command: webserver
-    entrypoint: ['/entrypoint.sh']
+    entrypoint: ['/opt/airflow/script/entrypoint.sh']
     depends_on:
       - postgres
     environment:
@@ -120,7 +120,7 @@ services:
         max-file: "3"
     volumes:
       - ./dags:/opt/airflow/dags
-      - ./scripts/entrypoint.sh:/entrypoint.sh
+      - ./scripts/entrypoint.sh:/opt/airflow/script/entrypoint.sh
       - ./requirements.txt:/opt/airflow/requirements.txt
     ports:
       - "8080:8080"
